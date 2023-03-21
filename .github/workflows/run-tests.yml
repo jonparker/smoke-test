@@ -1,0 +1,12 @@
+name: Run tests
+
+on:
+  repository_dispatch:
+    types: [run-smoke-test]
+
+jobs:
+  run-smoke-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Example Step
+        run: echo "Received dispatch event from repository ${{ github.event.repository.name }} with payload ${{ toJson(github.event.client_payload) }}"
