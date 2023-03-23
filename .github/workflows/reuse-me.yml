@@ -17,8 +17,6 @@ jobs:
         run: |
           echo "# Running tests on regions: ${{ inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
           echo "matrix=$regionsJSON" >> $GITHUB_OUTPUT
-#          echo "matrix=${{ inputs.regionsJSON }}" >> $GITHUB_OUTPUT
-
         env:
           regionsJSON: ${{ inputs.regionsJSON }}
   
