@@ -1,0 +1,13 @@
+name: Trigger Me
+on:
+ workflow_dispatch:
+  inputs:
+    regions:
+      description: "Enter regions in an array (e.g. '[\"au\", \"jp\"]')"
+      type: string
+      default: "['au', 'jp', 'uk', 'us']"
+jobs:
+  test:
+    uses: jonparker/smoke-test/.github/workflows/reuse-me.yml@main
+    with:
+      regions: ${{ github.event.inputs.region }}
