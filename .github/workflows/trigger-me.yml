@@ -6,8 +6,13 @@ on:
       description: "Enter regions in an array (e.g. '[\"au\", \"jp\"]')"
       type: string
       default: '["au", "jp", "uk", "us"]'
+    browsers:
+      description: "Enter browsers in an array (e.g. '[\"chrome\", \"firefox\"]')"
+      type: string
+      default: '["chrome", "firefox", "safari", "edge"]'
 jobs:
   test:
     uses: jonparker/smoke-test/.github/workflows/reuse-me.yml@main
     with:
      regionsJSON: ${{ inputs.regions }}
+     browsersJSON: ${{ inputs.browsers }}
