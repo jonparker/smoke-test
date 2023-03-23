@@ -15,8 +15,8 @@ jobs:
     steps:
       - id: setVariables
         run: |
-          echo "matrix=${{ github.event.inputs.regionsJSON }}" >> $GITHUB_OUTPUT
-          echo "# matrix=${{ github.event.inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
+          echo "matrix=${{ inputs.regionsJSON }}" >> $GITHUB_OUTPUT
+          echo "# matrix=${{ inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
   
   run_tests:
     runs-on: ubuntu-latest
