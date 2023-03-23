@@ -18,7 +18,7 @@ jobs:
           echo "matrix=$input" >> $GITHUB_OUTPUT
           echo "# matrix=$input" >> $GITHUB_STEP_SUMMARY
         env:
-          input: ${{ inputs.regionsJSON }}
+          input: ${{ github.event.inputs.regionsJSON }}
           
   run_tests:
     runs-on: ubuntu-latest
