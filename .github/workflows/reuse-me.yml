@@ -16,9 +16,11 @@ jobs:
       - id: setVariables
         run: |
           echo "# Running tests on regions: ${{ inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
-          echo "matrix={\"include\":[{\"region\":\"au\"},{\"region\":\"jp\"}]}" >> $GITHUB_OUTPUT
+          echo "matrix={\"include\": $regionsJSON }" >> $GITHUB_OUTPUT
 #          echo "matrix=${{ inputs.regionsJSON }}" >> $GITHUB_OUTPUT
 
+        env:
+          regionsJSON: ${{ inputs.regionsJSON }}
   
   run_tests:
     runs-on: ubuntu-latest
