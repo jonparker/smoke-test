@@ -16,6 +16,7 @@ jobs:
       - id: setVariables
         run: |
           echo "matrix=$input" >> $GITHUB_OUTPUT
+          echo "# matrix=$input" >> $GITHUB_STEP_SUMMARY
         env:
           input: ${{ inputs.regionsJSON }}
           
