@@ -5,6 +5,7 @@ on:
       regionsJSON:
         description: "Regions as an array [au, jp, uk]"
         required: true
+        default: "abc"
         type: string
 
 jobs:
