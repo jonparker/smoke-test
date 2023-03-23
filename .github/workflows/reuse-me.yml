@@ -3,7 +3,11 @@ on:
   workflow_call:
     inputs:
       regionsJSON:
-        description: "Regions as an array [au, jp, uk]"
+        description: "Regions as an array [\"au\", \"jp\", \"uk\"]"
+        required: true
+        type: string
+      browsersJSON:
+        description: "Browsers as an array [chrome, firefox, safari]"
         required: true
         type: string
 
@@ -16,9 +20,12 @@ jobs:
       - id: setVariables
         run: |
           echo "# Running tests on regions: ${{ inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
-          echo "matrix=$regionsJSON" >> $GITHUB_OUTPUT
+          echo "# Running with browsers: ${{ inputs.browsersJSON }}" >> $GITHUB_STEP_SUMMARY
+          echo "region_list=$regionsJSON" >> $GITHUB_OUTPUT
+          echo "browser_list=$browsersJSON" >> $GITHUB_OUTPUT
         env:
           regionsJSON: ${{ inputs.regionsJSON }}
+          browsersJSON: ${{ inputs.browsersJSON }}
   
   run_tests:
     runs-on: ubuntu-latest
@@ -26,7 +33,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        region: ${{ fromJSON(needs.setup.outputs.matrix) }}
+        region: ${{ fromJSON(needs.setup.outputs.region_list) }}
+        browser: ${{ fromJSON(needs.setup.outputs.browser_list) }}
     steps:
       - name: Running tests
         run: |
