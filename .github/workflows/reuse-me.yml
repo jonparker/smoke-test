@@ -1,0 +1,31 @@
+on:
+  workflow_call:
+    inputs:
+      regionsJSON:
+        description: "Regions as an array [au, jp, uk]"
+        required: true
+        type: string
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setVariables.outputs.matrix }}
+    steps:
+      - id: setVariables
+        run: |
+          echo "{matrix}={$input}" >> $GITHUB_OUTPUT
+        env:
+          input: ${{ inputs.regionsJSON }}
+          
+  run_tests:
+    runs-on: ubuntu-latest
+    needs: setup
+    strategy:
+      fail-fast: false
+      matrix:
+        region: ${{fromJSON(needs.setup.outputs.maxtrix)}}
+    steps:
+      - name: Running tests
+        run: |
+          echo "I am running tests for region: ${{maxtrix.region}}
