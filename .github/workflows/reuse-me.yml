@@ -31,4 +31,3 @@ jobs:
       - name: Running tests
         run: |
           echo "I am running tests for region: ${{ matrix.region }}"
-#          echo "${{needs.setup.outputs.matrix}}"
