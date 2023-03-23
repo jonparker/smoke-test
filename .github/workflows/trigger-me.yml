@@ -10,5 +10,5 @@ jobs:
   test:
     uses: jonparker/smoke-test/.github/workflows/reuse-me.yml@main
     with:
-     regionsJSON: '["au", "jp", "uk", "us"]'
-#     regionsJSON: ${{ github.event.inputs.region }}
+#     regionsJSON: '["au", "jp", "uk", "us"]'
+     regionsJSON: ${{ github.event.inputs.region }}
