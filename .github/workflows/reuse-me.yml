@@ -16,7 +16,7 @@ jobs:
       - id: setVariables
         run: |
           echo "# Running tests on regions: ${{ inputs.regionsJSON }}" >> $GITHUB_STEP_SUMMARY
-          echo "matrix={\"include\": $regionsJSON }" >> $GITHUB_OUTPUT
+          echo "matrix=$regionsJSON" >> $GITHUB_OUTPUT
 #          echo "matrix=${{ inputs.regionsJSON }}" >> $GITHUB_OUTPUT
 
         env:
@@ -27,7 +27,8 @@ jobs:
     needs: setup
     strategy:
       fail-fast: false
-      matrix: ${{ fromJSON(needs.setup.outputs.matrix) }}
+      matrix:
+        region: ${{ fromJSON(needs.setup.outputs.matrix) }}
     steps:
       - name: Running tests
         run: |
