@@ -24,9 +24,10 @@ jobs:
     needs: setup
     strategy:
       fail-fast: false
-      matrix:
-        region: ${{fromJSON(needs.setup.outputs.matrix)}}
+#      matrix:
+#        region: ${{fromJSON(needs.setup.outputs.matrix)}}
     steps:
       - name: Running tests
         run: |
-          echo "I am running tests for region: ${{ matrix.region }}
+          echo "${{needs.setup.outputs.matrix}}"
+#          echo "I am running tests for region: ${{ matrix.region }}
