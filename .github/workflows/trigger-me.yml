@@ -10,4 +10,4 @@ jobs:
   test:
     uses: jonparker/smoke-test/.github/workflows/reuse-me.yml@main
     with:
-      regions: ${{ github.event.inputs.region }}
+      regionsJSON: ${{ github.event.inputs.region }}
