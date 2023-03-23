@@ -1,3 +1,4 @@
+name: Reuse Me
 on:
   workflow_call:
     inputs:
@@ -14,7 +15,7 @@ jobs:
     steps:
       - id: setVariables
         run: |
-          echo "{matrix}={$input}" >> $GITHUB_OUTPUT
+          echo "matrix=$input" >> $GITHUB_OUTPUT
         env:
           input: ${{ inputs.regionsJSON }}
           
