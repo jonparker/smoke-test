@@ -24,7 +24,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        region: ${{fromJSON(needs.setup.outputs.maxtrix)}}
+        region: ${{fromJSON(needs.setup.outputs.matrix)}}
     steps:
       - name: Running tests
         run: |
