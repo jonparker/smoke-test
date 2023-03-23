@@ -24,8 +24,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        region: ${{fromJSON(needs.setup.outputs.maxtrix)}}
+        region: ['au', 'jp']
+#        region: ${{fromJSON(needs.setup.outputs.maxtrix)}}
     steps:
       - name: Running tests
         run: |
-          echo "I am running tests for region: ${{maxtrix.region}}
+          echo "I am running tests for region: ${{ maxtrix.region }}
