@@ -49,4 +49,4 @@ jobs:
     steps:
       - name: Running tests
         run: |
-          echo "I am running tests for region: ${{ matrix.region_list }} and browser ${{ matrix.browser_list }}"
+          echo "I am running tests for region: ${{ matrix.region }} and browser ${{ matrix.browser }}"
