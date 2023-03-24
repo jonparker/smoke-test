@@ -15,7 +15,8 @@ jobs:
   setup:
     runs-on: ubuntu-latest
     outputs:
-      matrix: ${{ steps.setVariables.outputs.matrix }}
+      region_list: ${{ steps.setVariables.outputs.region_list }}
+      browser_list: ${{ steps.setVariables.outputs.browser_list }}
     steps:
       - id: setVariables
         run: |
@@ -38,4 +39,4 @@ jobs:
     steps:
       - name: Running tests
         run: |
-          echo "I am running tests for region: ${{ matrix.region }}"
+          echo "I am running tests for region: ${{ matrix.region_list }} and browser ${{ matrix.browser_list }}"
