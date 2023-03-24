@@ -1,5 +1,15 @@
 name: Reuse Me
 on:
+  workflow_dispatch:
+    inputs:
+      regionsJSON:
+        description: "Enter regions in an array (e.g. '[\"au\", \"jp\"]')"
+        type: string
+        default: '["au", "jp", "uk", "us"]'
+      browsersJSON:
+        description: "Enter browsers in an array (e.g. '[\"chrome\", \"firefox\"]')"
+        type: string
+        default: '["chrome", "firefox", "safari", "edge"]'
   workflow_call:
     inputs:
       regionsJSON:
